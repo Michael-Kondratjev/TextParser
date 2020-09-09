@@ -1,7 +1,5 @@
 package epam.textparser.writer;
 
-import epam.textparser.composite.impl.Text;
-
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;

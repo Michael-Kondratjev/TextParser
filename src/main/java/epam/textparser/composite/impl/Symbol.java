@@ -1,15 +1,12 @@
 package epam.textparser.composite.impl;
 
-import epam.textparser.composite.Component;
 
-public class Symbol extends AbstractComponent {
+import epam.textparser.composite.TextComponent;
 
-    public Symbol(String s) {
-        this.nativeString = s;
-    }
+public class Symbol implements TextComponent {
+    private char symbol;
 
-    @Override
-    public Component parse() {
-        return null;
+    public Symbol(char symbol) {
+        this.symbol = symbol;
     }
 }
