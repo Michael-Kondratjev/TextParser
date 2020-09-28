@@ -25,7 +25,7 @@ public class TextComposite implements TextComponent {
     public void remove(TextComponent composite) {
         content.remove(composite);
     }
-
+    @Override
     public List<TextComponent> getContent() {
         return content;
     }

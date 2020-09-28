@@ -6,6 +6,8 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.List;
+
 public class Punctuation implements TextComponent {
     private char symbol;
     private TextComponentType type = TextComponentType.SYMBOL;
@@ -27,12 +29,19 @@ public class Punctuation implements TextComponent {
         throw new UnsupportedOperationException();
     }
 
-    public char getContent() {
+    public char getSymbol() {
         return symbol;
     }
 
     @Override
     public TextComponentType getType() { return type; }
+
+    @Override
+    public List<TextComponent> getContent() {
+        logger.log(Level.WARN, "Component type SYMBOL don't support operation \"getContent\"");
+        throw new UnsupportedOperationException();
+    }
+
 
     @Override
     public String toString() {
@@ -44,7 +53,7 @@ public class Punctuation implements TextComponent {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Punctuation that = (Punctuation) o;
-        return symbol == that.getContent() &&
+        return symbol == that.getSymbol() &&
                 type == that.getType();
     }
 

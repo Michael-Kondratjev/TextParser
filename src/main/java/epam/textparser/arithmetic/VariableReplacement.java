@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 
 public class VariableReplacement {
 
-    void replaceVariableJ(List<String> strings) {
+    public void replaceVariableJ(List<String> strings) {
         Pattern pattern = Pattern.compile("(-{2}|\\+{2})j|j(-{2}|\\+{2})");
         for (int k = 0; k < strings.size(); k++) {
             String lexeme = strings.get(k);
@@ -37,7 +37,7 @@ public class VariableReplacement {
         }
     }
 
-    void replaceVariableI(List<String> strings) {
+    public void replaceVariableI(List<String> strings) {
         Pattern pattern = Pattern.compile("(-{2}|\\+{2})i|i(-{2}|\\+{2})");
         for (int k = 0; k < strings.size(); k++) {
             String lexeme = strings.get(k);

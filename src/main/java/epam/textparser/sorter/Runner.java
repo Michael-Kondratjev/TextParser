@@ -1,12 +1,15 @@
-package epam.textparser.main;
+package epam.textparser.sorter;
 
+import epam.textparser.composite.TextComponent;
 import epam.textparser.composite.impl.TextComposite;
 import epam.textparser.exception.TextParserException;
 import epam.textparser.parser.impl.TextParser;
 import epam.textparser.reader.TextReader;
 import epam.textparser.writer.ResultWriter;
 
-public class Main {
+import java.util.List;
+
+public class Runner {
     public static void main(String[] args) {
         TextReader textReader = new TextReader();
         ResultWriter resultWriter = new ResultWriter();
@@ -18,6 +21,11 @@ public class Main {
             e.printStackTrace();
         }
         TextComposite text = textParser.parse(s);
-        System.out.println(text);
+
+        SentenceByLexemesSorter sentencesByWordsSorter = new SentenceByLexemesSorter();
+        List<TextComponent> list = sentencesByWordsSorter.sortSentencesByLexemes(text);
+        for (TextComponent textComponent : list) {
+            System.out.println(textComponent);
+        }
     }
 }

@@ -7,16 +7,15 @@ import java.util.*;
 
 public class ParagraphSorter {
 
-    /*
-    public List<TextComposite> sortParagraph(TextComposite text) {
-        List<TextComposite> paragraphList = text.getCompositeList();
+    public List<TextComponent> sortParagraph(TextComposite text) {
+        List<TextComponent> paragraphList = text.getContent();
 
         for (int i = 0; i < paragraphList.size() - 1 ; i++) {
             for (int j = i+1; j < paragraphList.size(); j++) {
-                TextComposite left = paragraphList.get(i);
-                TextComposite right = paragraphList.get(j);
-                if(left.getCompositeList().size() >
-                        right.getCompositeList().size()) {
+                TextComponent left = paragraphList.get(i);
+                TextComponent right = paragraphList.get(j);
+                if(left.getContent().size() >
+                        right.getContent().size()) {
                     paragraphList.set(i,right);
                     paragraphList.set(j, left);
                 }
@@ -24,7 +23,5 @@ public class ParagraphSorter {
         }
         return paragraphList;
     }
-
-     */
 }
 

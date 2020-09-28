@@ -1,6 +1,8 @@
 package epam.textparser.composite;
 
 
+import java.util.List;
+
 public interface TextComponent {
 
     void add(TextComponent composite);
@@ -8,5 +10,7 @@ public interface TextComponent {
     void remove(TextComponent composite);
 
     TextComponentType getType();
+
+    List<TextComponent> getContent();
 
 }
