@@ -1,28 +1,31 @@
 package epam.textparser.parser.impl;
 
-import epam.textparser.composite.TextComponent;
+import epam.textparser.composite.TextComponentType;
 import epam.textparser.composite.impl.TextComposite;
 import epam.textparser.parser.BasicParser;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class TextParser implements BasicParser {
+    private static TextParser instance = new TextParser();
 
-    static final String DELIMITER_INTO_PARAGRAPHS = "\\n {4}";
+    private TextParser() {
+    }
+
+    public static TextParser getInstance() {
+        return instance;
+    }
+
+    static final String PARAGRAPH_DELIMITER = "\\n {4}";
 
     @Override
-    public TextComposite parse(String text) {
-        text = text.trim();
-        ParagraphParser paragraphParser = new ParagraphParser();
-        List<TextComposite> paragraphList = new ArrayList<>();
-        String[] paragraphArray = text.split(DELIMITER_INTO_PARAGRAPHS);
-        for (String paragraphString : paragraphArray) {
-            TextComposite paragraph = paragraphParser.parse(paragraphString);
-            paragraphList.add(paragraph);
+    public TextComposite parse(String textAsString) {
+        TextComposite text = new TextComposite(TextComponentType.TEXT);
+        textAsString = textAsString.trim();
+        ParagraphParser paragraphParser = ParagraphParser.getInstance();
+        String[] paragraphArray = textAsString.split(PARAGRAPH_DELIMITER);
+        for (String paragraphAsString : paragraphArray) {
+            TextComposite paragraph = paragraphParser.parse(paragraphAsString);
+            text.add(paragraph);
         }
-        TextComposite textComposite = new TextComposite();
-        textComposite.setCompositeList(paragraphList);
-        return textComposite;
+        return text;
     }
 }

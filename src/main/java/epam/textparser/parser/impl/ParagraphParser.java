@@ -1,32 +1,31 @@
 package epam.textparser.parser.impl;
 
-import epam.textparser.composite.TextComponent;
-import epam.textparser.composite.impl.Symbol;
+import epam.textparser.composite.TextComponentType;
 import epam.textparser.composite.impl.TextComposite;
 import epam.textparser.parser.BasicParser;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class ParagraphParser implements BasicParser {
+    private static ParagraphParser instance = new ParagraphParser();
 
-    static final String DELIMITER_INTO_SENTENCES = "(?<=[.!?])\\s+";
-    //static final char DELIMITER_BEFORE_PARAGRAPH = '\t';
-    //static final char DELIMITER_AFTER_PARAGRAPH = '\n';
+    private ParagraphParser() {
+    }
+
+    public static ParagraphParser getInstance() {
+        return instance;
+    }
+
+    static final String SENTENCE_DELIMITER = "(?<=[.!?])\\s+";
 
     @Override
-    public TextComposite parse(String paragraph) {
-        SentenceParser sentenceParser = new SentenceParser();
-        List<TextComposite> sentenceList = new ArrayList<>();
-        //sentenceList.add(new Symbol(DELIMITER_BEFORE_PARAGRAPH));
-        String[] sentenceArray = paragraph.split(DELIMITER_INTO_SENTENCES);
-        for (String sentenceString : sentenceArray) {
-            TextComposite sentence = sentenceParser.parse(sentenceString);
-            sentenceList.add(sentence);
+    public TextComposite parse(String paragraphAsString) {
+        TextComposite paragraph = new TextComposite(TextComponentType.PARAGRAPH);
+        SentenceParser sentenceParser = SentenceParser.getInstance();
+
+        String[] sentenceArray = paragraphAsString.split(SENTENCE_DELIMITER);
+        for (String sentenceAsString : sentenceArray) {
+            TextComposite sentence = sentenceParser.parse(sentenceAsString);
+            paragraph.add(sentence);
         }
-        //sentenceList.add(new Symbol(DELIMITER_AFTER_PARAGRAPH));
-        TextComposite paragraphComposite = new TextComposite();
-        paragraphComposite.setCompositeList(sentenceList);
-        return paragraphComposite;
+        return paragraph;
     }
 }

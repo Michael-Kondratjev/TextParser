@@ -7,6 +7,7 @@ import java.util.List;
 
 public class SentencesByLexemesSorter {
 
+    /*
     public List<TextComposite> sortSentencesByLexemes(TextComposite text) {
         List<TextComposite> sentenceList = new ArrayList<>();
 
@@ -39,4 +40,6 @@ public class SentencesByLexemesSorter {
         return length;
     }
 
+
+     */
 }

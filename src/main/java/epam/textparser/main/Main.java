@@ -13,7 +13,7 @@ public class Main {
     public static void main(String[] args) {
         TextReader textReader = new TextReader();
         ResultWriter resultWriter = new ResultWriter();
-        TextParser textParser = new TextParser();
+        TextParser textParser = TextParser.getInstance();
         String s = "";
         try {
             s = textReader.textInStringReader("src/main/resources/Data.txt");

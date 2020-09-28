@@ -7,6 +7,7 @@ import java.util.*;
 
 public class ParagraphSorter {
 
+    /*
     public List<TextComposite> sortParagraph(TextComposite text) {
         List<TextComposite> paragraphList = text.getCompositeList();
 
@@ -23,5 +24,7 @@ public class ParagraphSorter {
         }
         return paragraphList;
     }
+
+     */
 }
 
