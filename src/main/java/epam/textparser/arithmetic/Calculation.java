@@ -3,7 +3,7 @@ package epam.textparser.arithmetic;
 import java.math.BigDecimal;
 import java.util.*;
 
-public class Calculator {
+public class Calculation {
 
     public static final String LEFT_BRACKET = "(";
     public static final String RIGHT_BRACKET = ")";
@@ -62,14 +62,14 @@ public class Calculator {
     public String sortingStation(String expression) {
         if (expression == null || expression.length() == 0)
             throw new IllegalStateException("Expression isn't specified.");
-        if (Calculator.MAIN_MATH_OPERATIONS == null || Calculator.MAIN_MATH_OPERATIONS.isEmpty())
+        if (Calculation.MAIN_MATH_OPERATIONS == null || Calculation.MAIN_MATH_OPERATIONS.isEmpty())
             throw new IllegalStateException("Operations aren't specified.");
         List<String> out = new ArrayList<>();
         Stack<String> stack = new Stack<>();
 
         expression = expression.replace(" ", "");
 
-        Set<String> operationSymbols = new HashSet<>(Calculator.MAIN_MATH_OPERATIONS.keySet());
+        Set<String> operationSymbols = new HashSet<>(Calculation.MAIN_MATH_OPERATIONS.keySet());
         operationSymbols.add(LEFT_BRACKET);
         operationSymbols.add(RIGHT_BRACKET);
 
@@ -104,7 +104,7 @@ public class Calculator {
                     stack.pop();
                 } else {
                     while (!stack.empty() && !stack.peek().equals(LEFT_BRACKET) &&
-                            (Calculator.MAIN_MATH_OPERATIONS.get(nextOperation) >= Calculator.MAIN_MATH_OPERATIONS.get(stack.peek()))) {
+                            (Calculation.MAIN_MATH_OPERATIONS.get(nextOperation) >= Calculation.MAIN_MATH_OPERATIONS.get(stack.peek()))) {
                         out.add(stack.pop());
                     }
                     stack.push(nextOperation);

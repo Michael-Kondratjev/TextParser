@@ -14,7 +14,7 @@ public class TextReader {
     private static final Logger logger = LogManager.getLogger();
 
     public String textInStringReader(String filePath) throws TextParserException {
-        StringBuilder stringBuilder = new StringBuilder("");
+        StringBuilder stringBuilder = new StringBuilder();
         String str;
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             while ((str = br.readLine()) != null) {
@@ -24,6 +24,6 @@ public class TextReader {
                 logger.log(Level.ERROR, "Reading file error");
                 throw new TextParserException("Reading file error", e);
         }
-        return String.valueOf(stringBuilder);
+        return stringBuilder.toString();
     }
 }

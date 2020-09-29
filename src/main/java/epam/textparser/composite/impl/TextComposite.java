@@ -41,7 +41,7 @@ public class TextComposite implements TextComponent {
         return stringBuilder;
     }
 
-    static final String BEFORE_PARAGRAPH = "\t";
+    static final String BEFORE_PARAGRAPH = "    ";
     static final String AFTER_PARAGRAPH = "\n";
     static final String LEXEME_DELIMITER = " ";
     @Override

@@ -13,10 +13,11 @@ public class Main {
         TextParser textParser = TextParser.getInstance();
         String s = "";
         try {
-            s = textReader.textInStringReader("src/main/resources/Data.txt");
+            s = textReader.textInStringReader("src/main/resources/Text_for_parsing.txt");
         } catch (TextParserException e) {
             e.printStackTrace();
         }
+        System.out.println(s);
         TextComposite text = textParser.parse(s);
         System.out.println(text);
     }

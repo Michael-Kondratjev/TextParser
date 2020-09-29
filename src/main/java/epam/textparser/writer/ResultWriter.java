@@ -16,6 +16,5 @@ public class ResultWriter {
         } catch (IOException e) {
             e.printStackTrace();
         }
-////
     }
 }
